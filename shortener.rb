@@ -44,6 +44,7 @@ end
 get '/:slug/?' do
   if @link = Link.get_by_slug(params[:slug])
     status 301
+    response['Cache-Control'] = 'public, max-age=300'
     response['Location'] = @link.url
   else
     "404!"
