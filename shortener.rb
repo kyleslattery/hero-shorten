@@ -37,10 +37,6 @@ get '/links/?' do
   erb :list
 end
 
-get '/favicon.ico' do
-  redirect 'http://kyleslattery.com/favicon.ico'
-end
-
 get '/:slug/?' do
   if @link = Link.get_by_slug(params[:slug])
     response['Cache-Control'] = 'public, max-age=300'
