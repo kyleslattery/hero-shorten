@@ -42,6 +42,7 @@ get '/:slug/?' do
     response['Cache-Control'] = 'public, max-age=300'
     redirect @link.url, 301
   else
+    status 404
     "404!"
   end
 end
