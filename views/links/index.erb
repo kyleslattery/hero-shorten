@@ -1,0 +1,20 @@
+<h1>URL Shortener</h1>
+
+<form action="/-/create" method="post">
+  <input type="text" name="url" />
+  <input type="submit" value="Go" />
+</form>
+
+<table>
+  <tr>
+    <th>Short URL</th>
+    <th>Full URL</th>
+  </tr>
+
+  <% @links.each do |link| %>
+  <tr>
+    <td><a href="/<%= link.slug %>"><%= link.slug %></a></td>
+    <td><a href="<%= link.url %>"><%= link.url %></a></td>
+  </tr>
+  <% end %>
+</table>
