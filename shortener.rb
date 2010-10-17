@@ -17,26 +17,6 @@ get '/' do
   redirect 'http://kyleslattery.com'
 end
 
-get '/links/new/?' do
-  if params[:url]
-    # just build it, don't show form
-    @link = Link.first_or_create(:url => params[:url])
-    'http://' + request.env['HTTP_HOST'] + '/' + @link.slug
-  else
-    erb :new
-  end
-end
-
-post '/links/?' do
-  @link = Link.first_or_create(:url => params[:link][:url])
-  @link.slug
-end
-
-get '/links/?' do
-  @links = Link.all
-  erb :list
-end
-
 # Admin section
 get '/-/?' do
   @links = Link.all(:order => [:id.desc])
