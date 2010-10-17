@@ -43,9 +43,8 @@ end
 
 get '/:slug/?' do
   if @link = Link.get_by_slug(params[:slug])
-    request.inspect
-    # status 301
-    # response['Location'] = @link.url
+    status 301
+    response['Location'] = @link.url
   else
     "404!"
   end
