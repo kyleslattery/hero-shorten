@@ -11,3 +11,8 @@ The goal is to create a live URL shortener doing only the following:
     git push heroku master
     
 And then be able to access it by going to http://some-sub-domain.heroku.com/-/.
+
+To-do
+-----
+1. Add option to password protect creating URLs using heroku env variables
+2. Add bookmarklet
