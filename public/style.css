@@ -15,6 +15,12 @@ section#content {width: 800px; margin: 0 auto; display: block;}
 form.new_url {line-height: 18px; display: block; float: right; width: 300px;}
   form.new_url input {font-size: 16px; line-height: 18px; padding: 4px 5px 8px; border: 0;}
   
+  form.new_url input.text {background-color: #eee;}
+  form.new_url input.text:hover, form.new_url input.text:focus {background-color: #fff;}
+  
+  form.new_url input.submit {background-color: #999; padding: 3px 5px 7px;}
+  form.new_url input.submit:hover, form.new_url input.submit:focus, form.new_url input.active {background-color: #0d0; cursor: pointer;}
+  
 table    {width: 480px;}
 table th {font-size: 18px; line-height: 18px; text-align: left; padding-right: 20px; padding-bottom: 5px;}
 table td {padding: 5px 5px 10px;}
