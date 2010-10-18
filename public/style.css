@@ -1,0 +1,21 @@
+@import 'reset.css';
+
+body {padding-bottom: 10px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 18px; background-color: #ccc;}
+
+a {text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+header {background-color: #222; color: white; display: block;}
+
+h1 {font-size: 36px; line-height: 54px; width: 800px; margin: 0 auto 18px; display: block;}
+h2 {font-size: 18px; line-height: 18px; padding-bottom: 5px;}
+
+section#content {width: 800px; margin: 0 auto; display: block;}
+
+form.new_url {line-height: 18px; display: block; float: right; width: 300px;}
+  form.new_url input {font-size: 16px; line-height: 18px; padding: 4px 5px 8px; border: 0;}
+  
+table    {width: 480px;}
+table th {font-size: 18px; line-height: 18px; text-align: left; padding-right: 20px; padding-bottom: 5px;}
+table td {padding: 5px 5px 10px;}
+table tr:nth-child(even) {background-color: #ddd;}

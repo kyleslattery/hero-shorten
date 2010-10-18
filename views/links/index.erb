@@ -1,14 +1,13 @@
-<h1>URL Shortener</h1>
-
-<form action="/-/create" method="post">
+<form action="/-/create" method="post" class="new_url">
+  <h2>Create a new short URL</h2>
   <input type="text" name="url" />
   <input type="submit" value="Go" />
 </form>
 
 <table>
   <tr>
-    <th>Short URL</th>
-    <th>Full URL</th>
+    <th>Short</th>
+    <th>Full</th>
   </tr>
 
   <% @links.each do |link| %>
