@@ -12,7 +12,7 @@ class Link
     self.get(self.decode(slug))
   end
   
-  CODESET = "0abcdefghijkmnpqrstuvwxyz23456789"
+  CODESET = "0abcdefghjkmnpqrstuvwxyz23456789"
   
   def self.encode(n)
     base      = CODESET.size
