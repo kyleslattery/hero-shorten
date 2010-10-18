@@ -1,8 +1,8 @@
 class Link
   include DataMapper::Resource
   
-  property :id,  Serial
-  property :url, Text
+  property :id,  Serial, :required => true
+  property :url, Text,   :required => true, :format => lambda {|s| !s.blank?}
   
   def slug
     Link.encode(self.id)

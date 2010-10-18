@@ -5,6 +5,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-postgres-adapter'
 require 'dm-migrations'
+require 'dm-validations'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
