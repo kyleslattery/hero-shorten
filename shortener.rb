@@ -6,7 +6,6 @@ require 'dm-core'
 require 'dm-postgres-adapter'
 require 'dm-migrations'
 require 'dm-validations'
-require 'encryptor'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
@@ -15,13 +14,12 @@ require 'lib/link'
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
-enable :sessions
+# Set the secret to the DATABASE_URL, since that's something that isn't shared
+use Rack::Session::Cookie, :secret =>  ENV['DATABASE_URL']                          
 
 def logged_in?
-  return true  if ENV['ADMIN_USERNAME'].nil? || ENV['ADMIN_PASSWORD'].nil?
-  return false if session['key'].nil?
-  
-  Encryptor.decrypt(:value => session['key'], :key => ENV['DATABASE_URL']) == request.ip
+  return true if ENV['ADMIN_USERNAME'].nil? || ENV['ADMIN_PASSWORD'].nil?
+  session['logged_in'] == 1
 end
 
 def require_log_in
@@ -33,7 +31,7 @@ get '/' do
 end
 
 # Admin section
-get '/-/?' do
+get '/-/?' do  
   require_log_in
   
   @links = Link.all(:order => [:id.desc])
@@ -52,7 +50,7 @@ get '/-/login' do
 end
 
 get '/-/logout' do
-  session['key'] = nil
+  session['logged_in'] = nil
   redirect "/-/login"
 end
 
@@ -60,7 +58,7 @@ post '/-/login' do
   redirect '/-/login' if params[:password] != ENV['ADMIN_PASSWORD'] ||
                          params[:username] != ENV['ADMIN_USERNAME']
                          
-  session['key'] = Encryptor.encrypt(:value => request.ip, :key => ENV['DATABASE_URL'])
+  session['logged_in'] = 1
   redirect '/-/'
 end
 
