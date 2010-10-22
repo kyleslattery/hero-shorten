@@ -18,6 +18,7 @@ DataMapper.auto_upgrade!
 enable :sessions
 
 def logged_in?
+  return true  if ENV['ADMIN_USERNAME'].nil? || ENV['ADMIN_PASSWORD'].nil?
   return false if session['key'].nil?
   
   Encryptor.decrypt(:value => session['key'], :key => ENV['DATABASE_URL']) == request.ip
