@@ -21,3 +21,4 @@ If you would like to password protect the admin section (http://your-shortener/-
 To-do
 -----
 1. Add bookmarklet
+2. Add validations to make actual URLs are being submitted
